@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">WiFi Debug Switch</string>
+
+    <string name="action_about">About</string>
+    <string name="title_activity_about">AboutActivity</string>
+
+    <string name="startdebug">Start WiFi\ndebugging</string>
+    <string name="stopdebug">Stop WiFi\ndebugging</string>
+    <string name="yourip">YOUR IP</string>
+
+    <string name="maintext">You can connect to your device executing:\nadb.exe connect *your IP*</string>
+    <string name="abouttext">Coded by 7Base.Net\n\nThis program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE."</string>
+</resources>
