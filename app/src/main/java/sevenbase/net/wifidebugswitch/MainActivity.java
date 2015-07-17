@@ -74,9 +74,7 @@ public class MainActivity extends ActionBarActivity {
         WifiManager wifiManager = (WifiManager)this.getSystemService(Context.WIFI_SERVICE);
         wifiManager.setWifiEnabled(true);
 
-        WifiManager wm = (WifiManager) getSystemService(WIFI_SERVICE);
-        TextView ipView = (TextView) findViewById(R.id.ipView);
-        ipView.setText(Formatter.formatIpAddress(wm.getConnectionInfo().getIpAddress()));
+        updateIP();
 
         final TextView conView = (TextView) findViewById(R.id.conView);
 
@@ -130,8 +128,10 @@ public class MainActivity extends ActionBarActivity {
             e.printStackTrace();
         }
 
+        //Start adb when button is clicked
         final Button startbutton = (Button) findViewById(R.id.startbutton);
         startbutton.setOnClickListener(new View.OnClickListener() {
+            @Override
             public void onClick(View v) {
                 try {
                     RootShell.getShell(true).add(startadb);
@@ -141,8 +141,10 @@ public class MainActivity extends ActionBarActivity {
             }
         });
 
+        //Stop adb when button is clicked
         final Button stopbutton = (Button) findViewById(R.id.stopbutton);
         stopbutton.setOnClickListener(new View.OnClickListener() {
+            @Override
             public void onClick(View v) {
                 try {
                     RootShell.getShell(true).add(stopadb);
@@ -152,6 +154,20 @@ public class MainActivity extends ActionBarActivity {
             }
         });
 
+        //Update IP when ipView is clicked
+        final TextView ipaddr = (TextView) findViewById(R.id.ipView);
+        ipaddr.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                updateIP();
+            }
+        });
+    }
+
+    private void updateIP() {
+        WifiManager wm = (WifiManager) getSystemService(WIFI_SERVICE);
+        TextView ipView = (TextView) findViewById(R.id.ipView);
+        ipView.setText(Formatter.formatIpAddress(wm.getConnectionInfo().getIpAddress()));
     }
 
     @Override
